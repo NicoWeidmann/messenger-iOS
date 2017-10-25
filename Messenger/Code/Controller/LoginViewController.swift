@@ -69,8 +69,14 @@ class LoginViewController: UIViewController {
             case .error(let error):
                 print(error)
                 
+                let errorAlert = UIAlertController(title: "Login failed", message: "I could have given you a proper error message, but I'm way too lazy :^)", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    // nothing to do
+                }))
+                self.present(errorAlert, animated: true, completion: nil)
+                
                 // show error message pop-up
-                let errorMessage = MBProgressHUD.showAdded(to: self.view, animated: true)
+                /*let errorMessage = MBProgressHUD.showAdded(to: self.view, animated: true)
                 errorMessage.mode = .text
                 errorMessage.label.text = "an error occurred"
                 errorMessage.detailsLabel.text = "try again later. good luck."
@@ -78,7 +84,7 @@ class LoginViewController: UIViewController {
                 errorMessage.backgroundView.color = .black
                 errorMessage.backgroundView.alpha = 0.6
                 errorMessage.minShowTime = 3
-                errorMessage.hide(animated: true, afterDelay: 3)
+                errorMessage.hide(animated: true, afterDelay: 3)*/
                 
             case .success(let result):
                 // store authentication data
