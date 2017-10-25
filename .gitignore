@@ -1,0 +1,5 @@
+Cartfile.resolved
+Carthage
+*.dSYM
+Messenger/Frameworks/*
+Messenger.xcodeproj
