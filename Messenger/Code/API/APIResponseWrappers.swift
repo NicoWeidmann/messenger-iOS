@@ -15,3 +15,7 @@ struct ContactsContainer : Decodable {
 struct MessageContainer : Decodable {
     var messages: [Message]
 }
+
+struct UserSearchContainer : Decodable {
+    var users: [User]
+}

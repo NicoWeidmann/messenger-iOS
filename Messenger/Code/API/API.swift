@@ -44,7 +44,8 @@ extension Alamofire.DataRequest {
 class API {
     static let shared = API()
     
-    static private let rootUrl = "https://api.deermichel.me:4000/api/v1/"
+    static let rootUrl = "https://api.deermichel.me:4000"
+    static private let entrypoint = "api/v1/"
     
     private init() {
     }
@@ -58,12 +59,14 @@ class API {
     
     func performRequest<T : Decodable>(route: Route, parameters: JSON?, callback: @escaping (Result<T>) -> Void) {
         
-        Alamofire.request(route.url, method: route.method, parameters: parameters, encoding: JSONEncoding.default, headers: self.headers)
+        let encoding : ParameterEncoding = route.method == HTTPMethod.get ? URLEncoding.queryString : JSONEncoding.default
+        
+        Alamofire.request(route.url, method: route.method, parameters: parameters, encoding: encoding, headers: self.headers)
             .responseCodable(callback: callback)
     }
     
     func reloadMe(token: String) {
-        self.performRequest(route: .me, parameters: nil) { (result: Result<User>) in
+        self.performRequest(route: .user_me, parameters: nil) { (result: Result<User>) in
             
             switch result {
             case .success(let user):
@@ -83,7 +86,8 @@ class API {
         static let logout = Route(method: .post, path: "auth/logout")
         
         // user routes
-        static let me = Route(method: .get, path: "user/me")
+        static let user_me = Route(method: .get, path: "user/me")
+        static let user_search = Route(method: .get, path: "user/search")
         
         // message routes
         static let message_all = Route(method: .get, path: "message/all")
@@ -99,7 +103,7 @@ class API {
         var path: String
         
         var url: String {
-            return API.rootUrl + self.path
+            return API.rootUrl + "/" + API.entrypoint + self.path
         }
         
         func extendPath(suffix: String) -> Route {

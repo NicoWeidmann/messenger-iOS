@@ -27,6 +27,9 @@
 		CE96056C1F9B9CA700D4605E /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96056B1F9B9CA700D4605E /* ConversationsTableViewController.swift */; };
 		CE96056E1F9B9DD000D4605E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96056D1F9B9DD000D4605E /* Conversation.swift */; };
 		CE9605711F9BA3B300D4605E /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9605701F9BA3B300D4605E /* ConversationTableViewCell.swift */; };
+		CEAEAED01FA1EA0C00CC397A /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAEAECE1FA1EA0C00CC397A /* SocketIO.framework */; };
+		CEAEAED11FA1EA0C00CC397A /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAEAECF1FA1EA0C00CC397A /* Starscream.framework */; };
+		CEAEAED31FA1EA7800CC397A /* SocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEAED21FA1EA7800CC397A /* SocketHandler.swift */; };
 		CEC077A71F9B4FF800A79CBA /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC077A61F9B4FF800A79CBA /* API.swift */; };
 		CEC077A91F9B504C00A79CBA /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC077A81F9B504C00A79CBA /* Alamofire.framework */; };
 		CEC077AB1F9B664800A79CBA /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC077AA1F9B664800A79CBA /* Chat.storyboard */; };
@@ -57,6 +60,9 @@
 		CE96056B1F9B9CA700D4605E /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
 		CE96056D1F9B9DD000D4605E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		CE9605701F9BA3B300D4605E /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
+		CEAEAECE1FA1EA0C00CC397A /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/iOS/SocketIO.framework; sourceTree = SOURCE_ROOT; };
+		CEAEAECF1FA1EA0C00CC397A /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = SOURCE_ROOT; };
+		CEAEAED21FA1EA7800CC397A /* SocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHandler.swift; sourceTree = "<group>"; };
 		CEC077A61F9B4FF800A79CBA /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CEC077A81F9B504C00A79CBA /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
 		CEC077AA1F9B664800A79CBA /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -69,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAEAED01FA1EA0C00CC397A /* SocketIO.framework in Frameworks */,
+				CEAEAED11FA1EA0C00CC397A /* Starscream.framework in Frameworks */,
 				CE0E10191F9CBF2000FDF6C3 /* MBProgressHUD.framework in Frameworks */,
 				CEC077A91F9B504C00A79CBA /* Alamofire.framework in Frameworks */,
 			);
@@ -116,6 +124,7 @@
 				CE9605671F9B84F900D4605E /* Message.swift */,
 				CE96056D1F9B9DD000D4605E /* Conversation.swift */,
 				CE2621191F9E830400AA14C9 /* ContactsManager.swift */,
+				CEAEAED21FA1EA7800CC397A /* SocketHandler.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,6 +169,8 @@
 		CEA2AC541F9B3F6000E2D46B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEAEAECE1FA1EA0C00CC397A /* SocketIO.framework */,
+				CEAEAECF1FA1EA0C00CC397A /* Starscream.framework */,
 				CE0E10181F9CBF2000FDF6C3 /* MBProgressHUD.framework */,
 				CEC077A81F9B504C00A79CBA /* Alamofire.framework */,
 			);
@@ -245,6 +256,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MBProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Starscream.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SocketIO.framework",
 			);
 			outputPaths = (
 			);
@@ -262,6 +275,7 @@
 				CE901E5F1F9B4E8000E40B66 /* LoginViewController.swift in Sources */,
 				CE26211A1F9E830400AA14C9 /* ContactsManager.swift in Sources */,
 				CE901E5A1F9B467300E40B66 /* User.swift in Sources */,
+				CEAEAED31FA1EA7800CC397A /* SocketHandler.swift in Sources */,
 				CE96056C1F9B9CA700D4605E /* ConversationsTableViewController.swift in Sources */,
 				CE9605681F9B84F900D4605E /* Message.swift in Sources */,
 				CED48E371FA0E8CB004C3F8D /* ChatTableViewCell.swift in Sources */,

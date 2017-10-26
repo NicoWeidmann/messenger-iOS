@@ -8,37 +8,76 @@
 
 import UIKit
 
-class AddContactViewController: ViewController {
-
-    @IBOutlet weak var usernameTf: UITextField!
+class AddContactViewController: ViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    @IBAction func add(_ sender: UIButton) {
-        guard let username = usernameTf.text else {
-            print("critical error: expected IBOutlet but found none!")
-            return
-        }
+    private var searchResults : [User] = []
+
+    @IBOutlet weak var resultTable: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchBar.becomeFirstResponder()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let result = searchResults[row]
         
-        guard !username.isEmpty else {
-            self.usernameTf.becomeFirstResponder()
-            return
-        }
+        let cell : ContactsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactsTableViewCell
         
-        let parameters = [
-            "user": username
-        ]
+        cell.profileImageView.image = nil
+        cell.nameLabel.text = result.username
+        cell.idLabel.text = result.id
         
-        API.shared.performRequest(route: .contact_add, parameters: parameters) { (response : Result<ContactsContainer>) in
-            switch response {
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70;
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            // search bar has no content
+            searchResults = []
+            self.resultTable.reloadData()
+        } else {
+            let parameters = [
+                "q": searchText
+            ]
+            API.shared.performRequest(route: .user_search, parameters: parameters, callback: { (response : Result<UserSearchContainer>) in
+                switch response {
                 case .error(let error):
                     print(error)
                 case .success(let result):
-                    ContactsManager.shared.contacts = result.contacts
-                    self.dismiss(animated: true, completion: nil)
-            }
+                    self.searchResults = result.users
+                    self.resultTable.reloadData()
+                }
+            })
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        usernameTf.becomeFirstResponder()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected = self.searchResults[indexPath.row]
+        let parameters = [
+            "user": selected.id
+        ]
+        API.shared.performRequest(route: .contact_add, parameters: parameters) { (response: Result<ContactsContainer>) in
+            switch response {
+            case .error(let error):
+                print(error)
+            case .success(let result):
+                ContactsManager.shared.contacts = result.contacts
+            }
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ContactsTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, ContactsManagerListener {
+class ContactsTableViewController: UITableViewController, ContactsManagerListener {
     
     @IBAction func longPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizerState.ended {
@@ -81,28 +81,13 @@ class ContactsTableViewController: UITableViewController, UIPopoverPresentationC
         self.tableView.reloadData()
     }
     
-    
-    // <-- ensuring the 'add contact' popover is actually presented as a popover -->
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "popoverSegue" {
-            let popoverVC = segue.destination
-            popoverVC.popoverPresentationController?.delegate = self
-            popoverVC.modalPresentationStyle = UIModalPresentationStyle.popover
-        } else if segue.identifier == "openChat" {
+        if segue.identifier == "openChat" {
             guard let cell = sender as? UITableViewCell else { return }
             guard let indexPath = self.tableView.indexPath(for: cell) else { return }
             
             let contact = ContactsManager.shared.contacts[indexPath.row]
             (segue.destination as! ChatTableViewController).contact = contact
         }
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
     }
 }

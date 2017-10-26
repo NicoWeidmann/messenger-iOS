@@ -97,6 +97,9 @@ class LoginViewController: UIViewController {
                 } else {
                     print("logged in without a user")
                 }
+                
+                try? SocketHandler.create()
+                
                 self.performSegue(withIdentifier: "proceedToChat", sender: nil)
             }
         }
