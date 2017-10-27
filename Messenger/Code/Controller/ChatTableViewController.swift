@@ -34,6 +34,30 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = contact?.username
+        
+        // subscribe to keyboard event
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // unsubscribe from keyboard event
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc private func keyboardWillChangeFrame(_ notification: Notification) {
+        let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size
+        
+        UIView.animate(withDuration: (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+        }
+    }
+    
+    // making sure the view doesn't glich around when rotating the device with keyboard activated
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     func reloadMessages() {

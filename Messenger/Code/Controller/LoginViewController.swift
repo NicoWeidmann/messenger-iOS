@@ -21,37 +21,22 @@ class LoginViewController: UIViewController {
         
         // restoreToken()
         
-        // subscribe to keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        // subscribe to keyboard event
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillChangeFrame), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // unsubscribe from keyboard events
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        // unsubscribe from keyboard event
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
-    // moving the view up when showing the keyboard (prevents hiding the buttons)
-    @objc private func keyboardWillShow(_ notification: Notification) {
-        guard !self.keyboardIsVisible else { return }
-        self.keyboardIsVisible = true
+    @objc private func keyboardWillChangeFrame(_ notification: Notification) {
         let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size
         
-        UIView.animate(withDuration: 0.2) {
-            self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height / 2)
-        }
-    }
-    
-    // moving the view down to it's initial position when hiding the keyboard
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        guard self.keyboardIsVisible else { return }
-        self.keyboardIsVisible = false
-        
-        UIView.animate(withDuration: 0.2) {
-            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        UIView.animate(withDuration: (notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height * 0.5)
         }
     }
     
