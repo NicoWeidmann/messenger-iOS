@@ -15,6 +15,9 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var messages: [Message] = []
     
+    // holds cached row heights to prevent jumping of tableView when scrolling
+    private var rowHeights: [Int: CGFloat] = [:]
+    
     // the conversation partner
     var contact: User?
     
@@ -27,6 +30,7 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
                     // message is new
                     self.messages.append(message)
                     self.chatTable.reloadData()
+                    self.scrollChatToBottom(animated: true)
                 }
             }
         })
@@ -74,11 +78,12 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
             case .success(let result):
                 self.messages = result.messages
                 self.chatTable.reloadData()
+                self.scrollChatToBottom(animated: false)
             }
         }
     }
     
-    @IBAction func sendMessage(_ sender: UIButton) {
+    @IBAction func sendMessage(_ sender: Any) {
         guard let text = messageTf.text else {
             print("ChatTableViewController: missing reference to messageTf!")
             return
@@ -91,13 +96,13 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
             "recipient": contact?.id as Any,
             "message": text
         ]
+        messageTf.text = nil
         API.shared.performRequest(route: .message_send, parameters: parameters) { (response: Result<Message>) in
             switch response {
             case .error(let error):
                 print(error)
             case .success(let result):
-                self.messages.append(result)
-                self.chatTable.reloadData()
+                print("successfully sent message '\(result.message)'")
             }
         }
         
@@ -130,7 +135,19 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         cell.dateLabel.text = DateFormatter.localizedString(from: message.timestamp, dateStyle: dateStyle, timeStyle: timeStyle)
-        
+        self.rowHeights[indexPath.row] = cell.bounds.height
         return cell
+    }
+    
+    private func scrollChatToBottom(animated: Bool) {
+        self.chatTable.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: animated)
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = rowHeights[indexPath.row] {
+            return height
+        }
+        return 53 // good average value, as most messages are only one line
+        
     }
 }
