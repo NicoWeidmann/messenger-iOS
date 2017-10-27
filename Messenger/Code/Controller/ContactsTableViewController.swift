@@ -40,13 +40,10 @@ class ContactsTableViewController: UITableViewController, ContactsManagerListene
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.reloadContacts()
         ContactsManager.shared.addListener(listener: self)
         // add long press gesture recognizer for delete contact action
         self.view.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(ContactsTableViewController.longPress(_:))))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.reloadContacts()
     }
 
     private func reloadContacts() {

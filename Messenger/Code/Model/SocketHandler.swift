@@ -14,6 +14,15 @@ class SocketHandler {
     static var shared : SocketHandler? = nil
     private var socket : SocketIOClient
     
+    var connected : Bool {
+        get {
+            return socket.status == SocketIOClientStatus.connected
+        }
+    }
+    
+    private var messageListeners : [(Message) -> Void] = []
+    private var userListeners : [(User) -> Void] = []
+    
     init() throws {
         guard let token = AuthManager.shared?.token else {
             print("SocketHandler: ERROR: need token in order to establish connection")
@@ -36,6 +45,32 @@ class SocketHandler {
         
         socket.on("message") { (response, ack) in
             print("SocketHandler: received 'message' from socket. Ack expected: \(ack.expected)")
+            do {
+                let json = try JSONSerialization.data(withJSONObject: response[0], options: .prettyPrinted)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .custom(customISODateDecoder)
+                let message = try decoder.decode(Message.self, from: json)
+                self.messageListeners.forEach({ (listener) in
+                    listener(message)
+                })
+            } catch let e {
+                print("SocketHandler: Error decoding message:")
+                print(e)
+            }
+        }
+        
+        socket.on("user") { (response, ack) in
+            print("SocketHandler: received 'user' from socket. Ack expected: \(ack.expected)")
+            do {
+                let json = try JSONSerialization.data(withJSONObject: response[0], options: .prettyPrinted)
+                let user = try JSONDecoder().decode(User.self, from: json)
+                self.userListeners.forEach({ (listener) in
+                    listener(user)
+                })
+            } catch let e {
+                print("SocketHandler: Error decoding user:")
+                print(e)
+            }
         }
     }
     
@@ -45,5 +80,13 @@ class SocketHandler {
     
     struct MissingTokenError : Error {
         let message : String
+    }
+    
+    func onMessage(callback: @escaping (Message) -> Void) {
+        messageListeners.append(callback)
+    }
+    
+    func onUser(callback: @escaping (User) -> Void) {
+        userListeners.append(callback)
     }
 }

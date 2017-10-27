@@ -23,6 +23,7 @@ extension Alamofire.DataRequest {
             switch response.result {
             case .success(let value):
                 let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .custom(customISODateDecoder)
                 do {
                     callback(.success(try decoder.decode(T.self, from: value)))
                 } catch let e {

@@ -20,10 +20,19 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.reloadMessages()
+        SocketHandler.shared?.onMessage(callback: { (message) in
+            if message.sender.id == self.contact?.id || message.sender.id == AuthManager.shared?.user?.id {
+                if !self.messages.contains(where: { existing -> Bool in existing.id == message.id }) {
+                    // message is new
+                    self.messages.append(message)
+                    self.chatTable.reloadData()
+                }
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.reloadMessages()
         self.title = contact?.username
     }
     
@@ -80,7 +89,6 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let message = self.messages[row]
         
         let cellType = (message.sender.id != AuthManager.shared?.user?.id) ? "foreignMessageCell" : "ownMessageCell"
-        
         let cell: ChatTableViewCell = tableView.dequeueReusableCell(withIdentifier: cellType, for: indexPath) as! ChatTableViewCell
         
         cell.messageLabel.text = message.message
@@ -88,6 +96,16 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
             // don't set name for own messages (leave 'You')
             cell.nameLabel.text = message.sender.username
         }
+        
+        var dateStyle : DateFormatter.Style = .short
+        var timeStyle : DateFormatter.Style = .none
+        
+        if Date().timeIntervalSince(message.timestamp).isLess(than: 24*60*60) {
+            dateStyle = DateFormatter.Style.none
+            timeStyle = DateFormatter.Style.short
+        }
+        
+        cell.dateLabel.text = DateFormatter.localizedString(from: message.timestamp, dateStyle: dateStyle, timeStyle: timeStyle)
         
         return cell
     }

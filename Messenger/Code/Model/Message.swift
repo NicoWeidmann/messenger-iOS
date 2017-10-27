@@ -12,6 +12,6 @@ struct Message : Decodable {
     var recipient : User
     var sender : User
     var message : String
-    var timestamp : String
+    var timestamp : Date
     var id : String
 }

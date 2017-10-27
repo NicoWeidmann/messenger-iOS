@@ -75,22 +75,10 @@ class LoginViewController: UIViewController {
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
                 
-                // show error message pop-up
-                /*let errorMessage = MBProgressHUD.showAdded(to: self.view, animated: true)
-                errorMessage.mode = .text
-                errorMessage.label.text = "an error occurred"
-                errorMessage.detailsLabel.text = "try again later. good luck."
-                errorMessage.backgroundView.style = .solidColor
-                errorMessage.backgroundView.color = .black
-                errorMessage.backgroundView.alpha = 0.6
-                errorMessage.minShowTime = 3
-                errorMessage.hide(animated: true, afterDelay: 3)*/
-                
             case .success(let result):
                 // store authentication data
                 AuthManager.shared = result
                 
-                // do some debugging :)
                 print("Manager created with Token \(result.token)")
                 if let user = result.user {
                     print("logged in User is \(user.username) with email \(user.mail ?? "<no mail>") and id \(user.id)")

@@ -13,6 +13,7 @@
 		CE26211A1F9E830400AA14C9 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2621191F9E830400AA14C9 /* ContactsManager.swift */; };
 		CE26211C1F9E878C00AA14C9 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26211B1F9E878C00AA14C9 /* AddContactViewController.swift */; };
 		CE26211E1F9E8A9500AA14C9 /* APIResponseWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26211D1F9E8A9500AA14C9 /* APIResponseWrappers.swift */; };
+		CE7194F01FA365D600AC8BD9 /* CustomDateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7194EF1FA365D600AC8BD9 /* CustomDateDecoder.swift */; };
 		CE8833951F9B3CAE006F04F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8833941F9B3CAE006F04F8 /* AppDelegate.swift */; };
 		CE8833971F9B3CAE006F04F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8833961F9B3CAE006F04F8 /* ViewController.swift */; };
 		CE88339A1F9B3CAE006F04F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8833981F9B3CAE006F04F8 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		CE2621191F9E830400AA14C9 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		CE26211B1F9E878C00AA14C9 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		CE26211D1F9E8A9500AA14C9 /* APIResponseWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseWrappers.swift; sourceTree = "<group>"; };
+		CE7194EF1FA365D600AC8BD9 /* CustomDateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateDecoder.swift; sourceTree = "<group>"; };
 		CE8833911F9B3CAE006F04F8 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8833941F9B3CAE006F04F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8833961F9B3CAE006F04F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		CEA2AC511F9B3F3A00E2D46B /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				CEAEAED41FA26AAE00CC397A /* Utility */,
 				CE901E5B1F9B4AE500E40B66 /* API */,
 				CE901E561F9B453900E40B66 /* Model */,
 				CE96056F1F9B9EEE00D4605E /* Controller */,
@@ -175,6 +178,14 @@
 				CEC077A81F9B504C00A79CBA /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEAEAED41FA26AAE00CC397A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CE7194EF1FA365D600AC8BD9 /* CustomDateDecoder.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 				CE901E5A1F9B467300E40B66 /* User.swift in Sources */,
 				CEAEAED31FA1EA7800CC397A /* SocketHandler.swift in Sources */,
 				CE96056C1F9B9CA700D4605E /* ConversationsTableViewController.swift in Sources */,
+				CE7194F01FA365D600AC8BD9 /* CustomDateDecoder.swift in Sources */,
 				CE9605681F9B84F900D4605E /* Message.swift in Sources */,
 				CED48E371FA0E8CB004C3F8D /* ChatTableViewCell.swift in Sources */,
 				CE0E10151F9CB10300FDF6C3 /* ContactsTableViewCell.swift in Sources */,
