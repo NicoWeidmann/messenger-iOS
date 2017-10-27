@@ -14,10 +14,51 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTf: UITextField!
     @IBOutlet weak var passwordTf: UITextField!
     
+    private var keyboardIsVisible = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // restoreToken()
+        
+        // subscribe to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // unsubscribe from keyboard events
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    // moving the view up when showing the keyboard (prevents hiding the buttons)
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard !self.keyboardIsVisible else { return }
+        self.keyboardIsVisible = true
+        let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.size
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height / 2)
+        }
+    }
+    
+    // moving the view down to it's initial position when hiding the keyboard
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        guard self.keyboardIsVisible else { return }
+        self.keyboardIsVisible = false
+        
+        UIView.animate(withDuration: 0.2) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        }
+    }
+    
+    // making sure the view doesn't glich around when rotating the device with keyboard activated
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.view.transform = CGAffineTransform(translationX: 0, y: 0)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     private func restoreToken() {
