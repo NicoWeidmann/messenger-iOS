@@ -47,7 +47,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user-id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjU-7m-lx6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last-seen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjU-7m-lx6">
                                                     <rect key="frame" x="0.0" y="40" width="261.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -72,7 +72,7 @@
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outlet property="idLabel" destination="JjU-7m-lx6" id="eMk-QI-kFr"/>
+                                    <outlet property="lastSeenLabel" destination="JjU-7m-lx6" id="jwx-VL-rml"/>
                                     <outlet property="nameLabel" destination="eS3-Nw-XUE" id="odT-A0-bB1"/>
                                     <outlet property="profileImageView" destination="3EF-0k-xpu" id="23B-Zt-jIm"/>
                                     <segue destination="zBk-rE-qCg" kind="show" identifier="openChat" id="jAR-Mo-Rci"/>

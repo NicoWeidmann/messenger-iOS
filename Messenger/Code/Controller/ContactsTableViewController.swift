@@ -65,7 +65,16 @@ class ContactsTableViewController: UITableViewController, ContactsManagerListene
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactsTableViewCell
         
         cell.nameLabel.text = contact.username
-        cell.idLabel.text = contact.id
+        
+        switch contact.last_seen {
+        case .online:
+            cell.lastSeenLabel.textColor = UIColor.green
+            cell.lastSeenLabel.text = "online"
+        case .offline(let lastSeen):
+            cell.lastSeenLabel.textColor = UIColor.lightGray
+            cell.lastSeenLabel.text = "last seen: \(lastSeen.formatDateCustom())"
+        }
+        
         return cell
     }
     

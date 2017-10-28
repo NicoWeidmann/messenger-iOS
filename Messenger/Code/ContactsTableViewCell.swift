@@ -12,7 +12,7 @@ class ContactsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var lastSeenLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

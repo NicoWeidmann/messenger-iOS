@@ -31,7 +31,7 @@ class AddContactViewController: ViewController, UISearchBarDelegate, UITableView
         
         cell.profileImageView.image = nil
         cell.nameLabel.text = result.username
-        cell.idLabel.text = result.id
+        cell.lastSeenLabel.text = result.mail
         
         return cell
     }

@@ -20,7 +20,17 @@ class ContactsManager {
     static var shared : ContactsManager = ContactsManager()
     
     private init() {
-        // nothing to do here
+        // we'll listen to user events to update the last seen status
+        SocketHandler.shared?.onUser(callback: { (user) in
+            for (i, current) in self.contacts.enumerated() {
+                if current.id == user.id {
+                    // found the culprit :D replacing him with the updated version
+                    self.contacts.remove(at: i)
+                    self.contacts.insert(user, at: i)
+                    return
+                }
+            }
+        })
     }
     
     func update() {

@@ -125,16 +125,9 @@ class ChatTableViewController: UIViewController, UITableViewDelegate, UITableVie
             // don't set name for own messages (leave 'You')
             cell.nameLabel.text = message.sender.username
         }
+        cell.dateLabel.text = message.timestamp.formatDateCustom()
         
-        var dateStyle : DateFormatter.Style = .short
-        var timeStyle : DateFormatter.Style = .none
-        
-        if Date().timeIntervalSince(message.timestamp).isLess(than: 24*60*60) {
-            dateStyle = DateFormatter.Style.none
-            timeStyle = DateFormatter.Style.short
-        }
-        
-        cell.dateLabel.text = DateFormatter.localizedString(from: message.timestamp, dateStyle: dateStyle, timeStyle: timeStyle)
+        // cache cell height
         self.rowHeights[indexPath.row] = cell.bounds.height
         return cell
     }

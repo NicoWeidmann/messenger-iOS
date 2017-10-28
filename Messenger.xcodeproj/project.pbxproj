@@ -28,6 +28,7 @@
 		CE96056C1F9B9CA700D4605E /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96056B1F9B9CA700D4605E /* ConversationsTableViewController.swift */; };
 		CE96056E1F9B9DD000D4605E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96056D1F9B9DD000D4605E /* Conversation.swift */; };
 		CE9605711F9BA3B300D4605E /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9605701F9BA3B300D4605E /* ConversationTableViewCell.swift */; };
+		CEA5AAEF1FA53BB100738523 /* CustomDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA5AAEE1FA53BB100738523 /* CustomDateFormat.swift */; };
 		CEAEAED01FA1EA0C00CC397A /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAEAECE1FA1EA0C00CC397A /* SocketIO.framework */; };
 		CEAEAED11FA1EA0C00CC397A /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAEAECF1FA1EA0C00CC397A /* Starscream.framework */; };
 		CEAEAED31FA1EA7800CC397A /* SocketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEAED21FA1EA7800CC397A /* SocketHandler.swift */; };
@@ -62,6 +63,7 @@
 		CE96056B1F9B9CA700D4605E /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
 		CE96056D1F9B9DD000D4605E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		CE9605701F9BA3B300D4605E /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
+		CEA5AAEE1FA53BB100738523 /* CustomDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormat.swift; sourceTree = "<group>"; };
 		CEAEAECE1FA1EA0C00CC397A /* SocketIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SocketIO.framework; path = Carthage/Build/iOS/SocketIO.framework; sourceTree = SOURCE_ROOT; };
 		CEAEAECF1FA1EA0C00CC397A /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = Carthage/Build/iOS/Starscream.framework; sourceTree = SOURCE_ROOT; };
 		CEAEAED21FA1EA7800CC397A /* SocketHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketHandler.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7194EF1FA365D600AC8BD9 /* CustomDateDecoder.swift */,
+				CEA5AAEE1FA53BB100738523 /* CustomDateFormat.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				CE9605681F9B84F900D4605E /* Message.swift in Sources */,
 				CED48E371FA0E8CB004C3F8D /* ChatTableViewCell.swift in Sources */,
 				CE0E10151F9CB10300FDF6C3 /* ContactsTableViewCell.swift in Sources */,
+				CEA5AAEF1FA53BB100738523 /* CustomDateFormat.swift in Sources */,
 				CEC077AD1F9B6E5B00A79CBA /* RegisterViewController.swift in Sources */,
 				CE26211E1F9E8A9500AA14C9 /* APIResponseWrappers.swift in Sources */,
 				CE0E10171F9CB22E00FDF6C3 /* ContactsTableViewController.swift in Sources */,

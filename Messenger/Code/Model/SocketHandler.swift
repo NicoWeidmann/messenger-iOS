@@ -34,7 +34,7 @@ class SocketHandler {
         socket.connect()
     }
     
-    func addHandlers() {
+    private func addHandlers() {
         socket.on("connect") { (response, ack) in
             print("SocketHandler: received 'connect' from socket. Ack expected: \(ack.expected). We're up and running!")
         }
