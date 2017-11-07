@@ -100,6 +100,10 @@ class API {
         static let contact_add = Route(method: .post, path: "contact/add")
         static let contact_delete = Route(method: .post, path: "contact/delete")
         
+        //conversation routes
+        static let conversation_all = Route(method: .get, path: "conversation/all")
+        static let conversation_with = Route(method: .get, path: "conversation/with")
+        
         var method: HTTPMethod
         var path: String
         

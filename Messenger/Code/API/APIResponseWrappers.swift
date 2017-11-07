@@ -19,3 +19,7 @@ struct MessageContainer : Decodable {
 struct UserSearchContainer : Decodable {
     var users: [User]
 }
+
+struct ConversationContainer : Decodable {
+    var conversations: [Conversation]
+}

@@ -8,9 +8,17 @@
 
 import Foundation
 
-struct Message : Decodable {
+struct Message : ModelObject, Decodable {
     var recipient : User
     var sender : User
+    var message : String
+    var timestamp : Date
+    var id : String
+}
+
+struct SparseMessage : ModelObject, Decodable {
+    var recipient : String
+    var sender : String
     var message : String
     var timestamp : Date
     var id : String

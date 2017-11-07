@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User : Decodable {
+struct User : ModelObject, Decodable {
     var username : String
     var mail : String?
     var id : String

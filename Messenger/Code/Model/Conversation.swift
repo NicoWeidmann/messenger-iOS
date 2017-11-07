@@ -8,9 +8,28 @@
 
 import Foundation
 
-struct Conversation : Decodable {
+struct Conversation : ModelObject, Decodable {
     
-    var partner : User
-    var lastMessage : String
-    // TODO
+    var last_message : SparseMessage
+    var participants : [User]
+    var id : String
+    
+    // the conversation partner that is not the user himself
+    // returns nil if foreign user cannot be determined
+    var foreign : User? {
+        get {
+            guard let user = AuthManager.shared?.user else {
+                print("Missing authenticated user!")
+                return nil
+            }
+            for i in participants {
+                if !(i == user) {
+                    return i
+                }
+            }
+            return nil
+        }
+    }
 }
+
+
