@@ -453,7 +453,7 @@
         <scene sceneID="pfl-ra-5f6">
             <objects>
                 <navigationController title="Conversations" automaticallyAdjustsScrollViewInsets="NO" id="EdN-Ts-TJd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Conversations" id="BpC-NO-KOl"/>
+                    <tabBarItem key="tabBarItem" title="Conversations" image="message" landscapeImage="message" selectedImage="message" id="BpC-NO-KOl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eVo-XH-R4f">
                         <autoresizingMask key="autoresizingMask"/>
@@ -486,7 +486,10 @@
             <point key="canvasLocation" x="816" y="241.97901049475263"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="message" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jAR-Mo-Rci"/>
+        <segue reference="uaa-Jv-jyW"/>
     </inferredMetricsTieBreakers>
 </document>
