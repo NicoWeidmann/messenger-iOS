@@ -396,9 +396,9 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="idLabel" destination="eZ6-b0-DMW" id="ZLW-XS-Awf"/>
-                                            <outlet property="nameLabel" destination="F0L-H9-KcI" id="GX0-rl-FEE"/>
-                                            <outlet property="profileImageView" destination="yDL-Zj-fpb" id="yss-Qw-shp"/>
+                                            <outlet property="lastSeenLabel" destination="eZ6-b0-DMW" id="7pe-ZK-NbU"/>
+                                            <outlet property="nameLabel" destination="F0L-H9-KcI" id="XIW-SU-hDZ"/>
+                                            <outlet property="profileImageView" destination="yDL-Zj-fpb" id="MiC-vw-ysQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -487,6 +487,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uaa-Jv-jyW"/>
+        <segue reference="jAR-Mo-Rci"/>
     </inferredMetricsTieBreakers>
 </document>
