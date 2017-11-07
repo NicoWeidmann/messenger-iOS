@@ -2,5 +2,5 @@ Cartfile.resolved
 Carthage
 *.dSYM
 Messenger/Frameworks/*
-Messenger.xcodeproj
+Messenger.xcodeproj/*
 !Messenger.xcodeproj/project.pbxproj
