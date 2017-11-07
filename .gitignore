@@ -3,3 +3,4 @@ Carthage
 *.dSYM
 Messenger/Frameworks/*
 Messenger.xcodeproj
+!Messenger.xcodeproj/project.pbxproj
