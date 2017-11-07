@@ -39,9 +39,10 @@ class ConversationManager {
                     for (i, conversation) in self.conversations.enumerated() {
                         if conversation == result {
                             self.conversations.remove(at: i)
-                            self.conversations.insert(result, at: 0)
                         }
                     }
+                    // insert the new conversation, even if one with the user didn't exist before
+                    self.conversations.insert(result, at: 0)
                 }
             })
         })
