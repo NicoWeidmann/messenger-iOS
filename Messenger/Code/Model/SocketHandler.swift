@@ -28,7 +28,7 @@ class SocketHandler {
             print("SocketHandler: ERROR: need token in order to establish connection")
             throw MissingTokenError(message: "SocketHandler: ERROR: need token in order to establish connection")
         }
-        socket = SocketIOClient(socketURL: URL(string: API.rootUrl)!, config: [.connectParams(["auth_token": token]), .reconnects(true), .log(true)])
+        socket = SocketIOClient(socketURL: URL(string: API.shared.information.socket_url)!, config: [.connectParams(["auth_token": token]), .reconnects(true), .log(true)])
         addHandlers()
         print("SocketHandler: connecting to socket...")
         socket.connect()

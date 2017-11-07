@@ -43,12 +43,17 @@ extension Alamofire.DataRequest {
 
 
 class API {
+    
     static let shared = API()
     
-    static let rootUrl = "https://api.deermichel.me:4000"
-    static private let entrypoint = "api/v1/"
+    let information : APIInformation
     
     private init() {
+        
+        // read API Information from API.plist
+        let fileURL = Bundle.main.url(forResource: "API", withExtension: "plist")
+        let data = try! Data.init(contentsOf: fileURL!, options: .mappedIfSafe)
+        self.information = try! PropertyListDecoder().decode(APIInformation.self, from: data)
     }
     
     private var headers: HTTPHeaders? {
@@ -108,7 +113,7 @@ class API {
         var path: String
         
         var url: String {
-            return API.rootUrl + "/" + API.entrypoint + self.path
+            return API.shared.information.entrypoint + "/" + self.path
         }
         
         func extendPath(suffix: String) -> Route {

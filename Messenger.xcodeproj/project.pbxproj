@@ -13,6 +13,7 @@
 		CE26211A1F9E830400AA14C9 /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2621191F9E830400AA14C9 /* ContactsManager.swift */; };
 		CE26211C1F9E878C00AA14C9 /* AddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26211B1F9E878C00AA14C9 /* AddContactViewController.swift */; };
 		CE26211E1F9E8A9500AA14C9 /* APIResponseWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE26211D1F9E8A9500AA14C9 /* APIResponseWrappers.swift */; };
+		CE5F41991FB26683005DD653 /* API.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE5F41981FB26683005DD653 /* API.plist */; };
 		CE6E74041FB1A943007698AE /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E74031FB1A943007698AE /* ConversationManager.swift */; };
 		CE6E74061FB1AE31007698AE /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6E74051FB1AE31007698AE /* ModelType.swift */; };
 		CE7194F01FA365D600AC8BD9 /* CustomDateDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7194EF1FA365D600AC8BD9 /* CustomDateDecoder.swift */; };
@@ -48,6 +49,7 @@
 		CE2621191F9E830400AA14C9 /* ContactsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		CE26211B1F9E878C00AA14C9 /* AddContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactViewController.swift; sourceTree = "<group>"; };
 		CE26211D1F9E8A9500AA14C9 /* APIResponseWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseWrappers.swift; sourceTree = "<group>"; };
+		CE5F41981FB26683005DD653 /* API.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = API.plist; sourceTree = "<group>"; };
 		CE6E74031FB1A943007698AE /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		CE6E74051FB1AE31007698AE /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
 		CE7194EF1FA365D600AC8BD9 /* CustomDateDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateDecoder.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				CE88339D1F9B3CAE006F04F8 /* LaunchScreen.storyboard */,
 				CE901E5C1F9B4D6400E40B66 /* LoginScreen.storyboard */,
 				CEC077AA1F9B664800A79CBA /* Chat.storyboard */,
+				CE5F41981FB26683005DD653 /* API.plist */,
 				CEA2AC511F9B3F3A00E2D46B /* Code */,
 				CEA2AC541F9B3F6000E2D46B /* Frameworks */,
 				CE88339B1F9B3CAE006F04F8 /* Assets.xcassets */,
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE88339F1F9B3CAE006F04F8 /* LaunchScreen.storyboard in Resources */,
+				CE5F41991FB26683005DD653 /* API.plist in Resources */,
 				CE88339C1F9B3CAE006F04F8 /* Assets.xcassets in Resources */,
 				CE88339A1F9B3CAE006F04F8 /* Main.storyboard in Resources */,
 				CEC077AB1F9B664800A79CBA /* Chat.storyboard in Resources */,

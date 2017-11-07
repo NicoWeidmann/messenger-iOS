@@ -23,3 +23,8 @@ struct UserSearchContainer : Decodable {
 struct ConversationContainer : Decodable {
     var conversations: [Conversation]
 }
+
+struct APIInformation : Decodable {
+    var entrypoint : String
+    var socket_url : String
+}

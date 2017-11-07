@@ -18,5 +18,8 @@ the messenger's features, have a look at the [API Documentation](https://github.
 ## Internals
 
 The App uses [Alamofire](https://github.com/Alamofire/Alamofire) for most API interaction and
-[socket.io](https://socket.io) for the 'instant' part in 'Instant Messaging'. As for the architecture side of things, 
+[socket.io](https://socket.io) for the 'instant' part in 'Instant Messaging'. As for the architecture side of things,
 it's not the most fancy of it's kind. But who cares as long as it works, right? 😬
+
+If you want to try and run the application yourself, make sure to place your API entry point and socket url in the
+[API.plist](Messenger/API.plist).
